@@ -1,0 +1,47 @@
+{
+    "auth": {
+        "myamplifyapp13ff72b5": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": []
+        }
+    },
+    "api": {
+        "graphqlAmplify": {
+            "service": "AppSync",
+            "providerPlugin": "awscloudformation",
+            "output": {
+                "authConfig": {
+                    "additionalAuthenticationProviders": [],
+                    "defaultAuthentication": {
+                        "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+                        "userPoolConfig": {
+                            "userPoolId": "authmyamplifyapp13ff72b5"
+                        }
+                    }
+                }
+            }
+        },
+        "restApi": {
+            "service": "API Gateway",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "function",
+                    "resourceName": "mainLambda",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
+        }
+    },
+    "function": {
+        "mainLambda": {
+            "service": "Lambda",
+            "providerPlugin": "awscloudformation",
+            "build": true
+        }
+    }
+}

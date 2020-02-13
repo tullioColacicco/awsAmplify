@@ -1,0 +1,42 @@
+{
+    "paths": [
+        {
+            "name": "/items",
+            "lambdaFunction": "mainLambda",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/checkout",
+            "lambdaFunction": "mainLambda",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "restApi",
+    "apiName": "restApi",
+    "functionArns": [
+        {
+            "lambdaFunction": "mainLambda"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-my-amplify-app-dev-181838-authRole",
+        "unAuthRoleName": "amplify-my-amplify-app-dev-181838-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "mainLambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "62cb6fe4"
+}
